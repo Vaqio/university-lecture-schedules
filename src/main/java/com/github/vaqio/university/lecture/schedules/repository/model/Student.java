@@ -25,19 +25,19 @@ public class Student extends Auditable<Long> {
 
   @NotBlank
   @Length(min = 3, max = 40)
-  @Column(name = "first_name", nullable = false)
+  @Column(name = "first_name")
   private String firstName;
 
   @NotBlank
   @Length(min = 3, max = 40)
-  @Column(name = "last_name", nullable = false)
+  @Column(name = "last_name")
   private String lastName;
 
   @NaturalId
   @NotBlank
   @Length(min = 3, max = 40)
   @Email
-  @Column(nullable = false, unique = true)
+  @Column(unique = true)
   private String email;
 
   @NotBlank
