@@ -1,0 +1,57 @@
+# Docker compose file reference (https://docs.docker.com/compose/compose-file/)
+version: '3.1'
+
+# Define services
+services:
+
+  # MariaDB Database for the application
+  database:
+    container_name: university_lecture_schedules_mariadb_10.8
+    image: mariadb:10.8
+    restart: unless-stopped
+    # Volume mounted for database for the storage
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    # Environment variables
+    environment:
+      MYSQL_ROOT_PASSWORD: icshc23y5ieyeenf
+      MYSQL_PASSWORD: asfd78asdas
+      MYSQL_DATABASE: university_lecture_schedules
+      MYSQL_USER: example
+    networks:
+      - university-lecture-schedules-network
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+
+  # Back-end spring boot application
+  app:
+    container_name: university_lecture_schedules_app
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://university_schedule_mariadb_10.8:3306/university_lecture_schedules?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: icshc23y5ieyeenf
+      SPRING_PROFILES_ACTIVE: staging
+    ports:
+      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    networks:
+      - university-lecture-schedules-network
+    depends_on:
+      - database
+    deploy:
+      resources:
+        limits:
+          memory: 500M
+
+# Volumes for Database
+volumes:
+  mariadb-data:
+
+# Network for the Database and Rest-Api
+networks:
+  university-lecture-schedules-network:
+    driver: bridge
