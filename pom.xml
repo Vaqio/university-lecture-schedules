@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.github.vaqio</groupId>
-    <artifactId>university-schedule</artifactId>
+    <artifactId>university-lecture-schedule</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>university-schedule</name>
     <description>A Rest-API to schedule subject-lectures and apply to a lecture as a student</description>
