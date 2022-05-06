@@ -21,6 +21,7 @@ public class LectureRoom {
 
   @NotBlank
   @Length(min = 1, max = 20)
+  @Column(name = "room_number")
   private String roomNumber;
 
 }
