@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @Table(name = "students")
 @Entity
-public class Student extends Auditable<Student> {
+public class Student extends Auditable<Long> {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
