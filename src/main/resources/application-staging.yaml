@@ -1,0 +1,23 @@
+# Server configuration
+server:
+  port: 8080
+
+# Spring configuration
+spring:
+  application:
+    name: University-Lecture-Schedule-Production
+
+  # JPA configuration
+  jpa:
+    generate-ddl: true
+    hibernate:
+      # Hibernate ddl auto (create-drop (default), create, validate, update)
+      ddl-auto: update
+      naming:
+        # Naming strategy
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        # Allows Hibernate to generate SQL optimized for a particular DBMS
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
