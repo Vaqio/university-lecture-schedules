@@ -3,7 +3,9 @@ package com.github.vaqio.university.lecture.schedules.repository.model.audit;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,18 +16,24 @@ import java.util.Date;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class DateAudit {
+public abstract class Auditable<T> {
+
+  @CreatedBy
+  @Column(name = "last_modified_by", updatable = false, nullable = false)
+  private T createdBy;
 
   @Temporal(TemporalType.TIMESTAMP)
   @CreatedDate
-  @JsonIgnore
   @Column(name = "created_at", updatable = false, nullable = false)
-  private Date createdAt;
+  private Date creationDate;
+
+  @LastModifiedBy
+  @Column(name = "last_modified_by", updatable = false, nullable = false)
+  private T lastModifiedBy;
 
   @Temporal(TemporalType.TIMESTAMP)
   @LastModifiedDate
-  @JsonIgnore
   @Column(name = "created_at", updatable = false, nullable = false)
-  private Date updatedAt;
+  private Date lastModifiedDate;
 
 }
