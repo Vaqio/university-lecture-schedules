@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public interface StudentService {
 
-  boolean existsId(Long id);
+  boolean existsById(Long id);
 
-  boolean existsEmail(String email);
+  boolean existsByEmail(String email);
 
   void create(StudentDTO studentDTO);
 
