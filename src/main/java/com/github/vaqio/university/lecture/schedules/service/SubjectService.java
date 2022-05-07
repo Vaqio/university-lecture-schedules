@@ -12,9 +12,9 @@ public interface SubjectService {
 
   boolean existsByName(String name);
 
-  void create(SubjectDTO subjectDTO);
+  SubjectDTO create(SubjectDTO subjectDTO);
 
-  void update(Long id, SubjectDTO subjectDTO);
+  SubjectDTO update(Long id, SubjectDTO subjectDTO);
 
   void deleteById(Long id);
 

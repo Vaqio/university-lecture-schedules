@@ -12,9 +12,9 @@ public interface StudentService {
 
   boolean existsByEmail(String email);
 
-  void create(StudentDTO studentDTO);
+  StudentDTO create(StudentDTO studentDTO);
 
-  void update(Long id, StudentDTO studentDTO);
+  StudentDTO update(Long id, StudentDTO studentDTO);
 
   void deleteById(Long id);
 

@@ -12,9 +12,9 @@ public interface LectureRoomService {
 
   boolean existsByRoomNumber(String roomNumber);
 
-  void create(LectureRoomDTO lectureRoomDTO);
+  LectureRoomDTO create(LectureRoomDTO lectureRoomDTO);
 
-  void update(Long id, LectureRoomDTO lectureRoomDTO);
+  LectureRoomDTO update(Long id, LectureRoomDTO lectureRoomDTO);
 
   void deleteById(Long id);
 
