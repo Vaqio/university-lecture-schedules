@@ -10,8 +10,6 @@ import java.util.Optional;
 @Repository
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
 
-  Optional<Lecture> findByName(String name);
-
   Optional<Lecture> findByNameIgnoreCase(String name);
 
   List<Lecture> findAllBySubjectId(Long subjectId);
@@ -25,8 +23,6 @@ public interface LectureRepository extends JpaRepository<Lecture, Long> {
   boolean existsByName(String name);
 
   boolean existsByNameIgnoreCase(String name);
-
-  void deleteByName(String name);
 
   void deleteByNameIgnoreCase(String name);
 
