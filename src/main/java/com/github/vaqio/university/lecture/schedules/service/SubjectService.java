@@ -1,7 +1,6 @@
 package com.github.vaqio.university.lecture.schedules.service;
 
 import com.github.vaqio.university.lecture.schedules.controller.dto.SubjectDTO;
-import com.github.vaqio.university.lecture.schedules.repository.model.Subject;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +21,10 @@ public interface SubjectService {
 
   void deleteAll();
 
-  Optional<Subject> getById(Long id);
+  Optional<SubjectDTO> getById(Long id);
 
-  Optional<Subject> getByName(String name);
+  Optional<SubjectDTO> getByName(String name);
 
-  List<Subject> getAll();
+  List<SubjectDTO> getAll();
 
 }

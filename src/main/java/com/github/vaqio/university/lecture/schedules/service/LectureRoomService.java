@@ -1,7 +1,6 @@
 package com.github.vaqio.university.lecture.schedules.service;
 
 import com.github.vaqio.university.lecture.schedules.controller.dto.LectureRoomDTO;
-import com.github.vaqio.university.lecture.schedules.repository.model.LectureRoom;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +21,10 @@ public interface LectureRoomService {
 
   void deleteAll();
 
-  Optional<LectureRoom> getById(Long id);
+  Optional<LectureRoomDTO> getById(Long id);
 
-  Optional<LectureRoom> getByRoomNumber(String roomNumber);
+  Optional<LectureRoomDTO> getByRoomNumber(String roomNumber);
 
-  List<LectureRoom> getAll();
+  List<LectureRoomDTO> getAll();
 
 }
