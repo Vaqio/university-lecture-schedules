@@ -23,7 +23,7 @@ public class LectureRoom {
 
   @NotBlank
   @Length(min = 1, max = 20)
-  @Column(name = "room_number")
+  @Column(name = "room_number", unique = true)
   private String roomNumber;
 
   @OneToMany(
