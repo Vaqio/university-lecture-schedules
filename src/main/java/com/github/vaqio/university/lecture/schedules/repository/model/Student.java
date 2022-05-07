@@ -9,6 +9,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Builder
 @Setter
@@ -45,5 +47,13 @@ public class Student extends Auditable<Long> {
   @Length(min = 3, max = 40)
   @Column(unique = true)
   private String password;
+
+  @NotNull
+  @ManyToMany(
+          fetch = FetchType.EAGER,
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE },
+          mappedBy = "students")
+  @JsonIgnore
+  private Set<Lecture> lectures;
 
 }

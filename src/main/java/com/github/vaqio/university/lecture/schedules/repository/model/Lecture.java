@@ -6,7 +6,9 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Set;
 
 @Builder
 @Setter
@@ -25,6 +27,43 @@ public class Lecture {
   @Length(min = 3, max = 40)
   @Column
   private String name;
+
+  @NotNull
+  @ManyToOne(
+          fetch = FetchType.EAGER,
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(
+          name = "lecture_subjects",
+          joinColumns = @JoinColumn(name = "lecture_id"),
+          inverseJoinColumns = @JoinColumn(name = "subject_id"))
+  private Subject subject;
+
+  @ManyToMany(
+          fetch = FetchType.EAGER,
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(
+          name = "lecture_students",
+          joinColumns = @JoinColumn(name = "lecture_id"),
+          inverseJoinColumns = @JoinColumn(name = "student_id"))
+  private Set<Student> students;
+
+  @ManyToMany(
+          fetch = FetchType.EAGER,
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(
+          name = "lecture_teachers",
+          joinColumns = @JoinColumn(name = "lecture_id"),
+          inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+  private Set<Teacher> teachers;
+
+  @ManyToOne(
+          fetch = FetchType.EAGER,
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+  @JoinTable(
+          name = "lecture_rooms",
+          joinColumns = @JoinColumn(name = "lecture_id"),
+          inverseJoinColumns = @JoinColumn(name = "lecture_room_id"))
+  private LectureRoom lectureRoom;
 
   @Nullable
   @Temporal(TemporalType.TIMESTAMP)
