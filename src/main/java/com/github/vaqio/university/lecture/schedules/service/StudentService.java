@@ -10,7 +10,7 @@ public interface StudentService {
   boolean existsById(Long id);
 
   boolean existsByEmail(String email);
-S
+
   StudentDTO create(StudentDTO studentDTO);
 
   StudentDTO update(Long id, StudentDTO studentDTO);
