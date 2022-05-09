@@ -1,6 +1,7 @@
 package com.github.vaqio.university.lecture.schedules.service;
 
 import com.github.vaqio.university.lecture.schedules.controller.dto.TeacherDTO;
+import com.github.vaqio.university.lecture.schedules.repository.model.account.Teacher;
 
 import java.security.Principal;
 import java.util.List;
@@ -12,9 +13,9 @@ public interface TeacherService {
 
   boolean existsByName(String name);
 
-  TeacherDTO create(TeacherDTO teacherDTO);
+  Optional<Teacher> create(TeacherDTO teacherDTO);
 
-  TeacherDTO update(Long id, TeacherDTO teacherDTO);
+  Optional<Teacher> update(Long id, TeacherDTO teacherDTO);
 
   void deleteById(Long id);
 
@@ -22,12 +23,12 @@ public interface TeacherService {
 
   void deleteAll();
 
-  TeacherDTO getCurrent(Principal principal);
+  Optional<Teacher> getCurrent(Principal principal);
 
-  Optional<TeacherDTO> getById(Long id);
+  Optional<Teacher> getById(Long id);
 
-  Optional<TeacherDTO> getByName(String name);
+  Optional<Teacher> getByName(String name);
 
-  List<TeacherDTO> getAll();
+  List<Teacher> getAll();
 
 }

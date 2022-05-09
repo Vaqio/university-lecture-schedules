@@ -12,15 +12,15 @@ public interface LectureService {
 
   boolean existsByName(String name);
 
-  LectureDTO create(LectureDTO lectureDTO);
+  Optional<Lecture> create(LectureDTO lectureDTO);
 
-  LectureDTO update(Long id, LectureDTO lectureDTO);
+  Optional<Lecture> update(Long id, LectureDTO lectureDTO);
 
   void deleteById(Long id);
 
   void deleteAll();
 
-  Optional<LectureDTO> getById(Long id);
+  Optional<Lecture> getById(Long id);
 
   List<Lecture> getAllByName(String name);
 
@@ -32,6 +32,6 @@ public interface LectureService {
 
   List<Lecture> getAllByLectureRoomId(Long lectureRoomId);
 
-  List<LectureDTO> getAll();
+  List<Lecture> getAll();
 
 }
