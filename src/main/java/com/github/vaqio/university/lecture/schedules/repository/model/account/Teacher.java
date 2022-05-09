@@ -1,12 +1,11 @@
-package com.github.vaqio.university.lecture.schedules.repository.model;
+package com.github.vaqio.university.lecture.schedules.repository.model.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.github.vaqio.university.lecture.schedules.repository.model.audit.Auditable;
+import com.github.vaqio.university.lecture.schedules.repository.model.Lecture;
+import com.github.vaqio.university.lecture.schedules.repository.model.Subject;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "teachers")
 @Entity
-public class Teacher extends Auditable<Long> {
+public class Teacher extends User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
-  @NotBlank
-  @Length(min = 3, max = 40)
-  private String name;
 
   @NotNull
   @ManyToMany(

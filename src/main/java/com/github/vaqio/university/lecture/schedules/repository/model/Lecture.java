@@ -1,5 +1,7 @@
 package com.github.vaqio.university.lecture.schedules.repository.model;
 
+import com.github.vaqio.university.lecture.schedules.repository.model.account.Student;
+import com.github.vaqio.university.lecture.schedules.repository.model.account.Teacher;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.Nullable;

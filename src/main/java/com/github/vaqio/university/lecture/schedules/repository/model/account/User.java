@@ -1,28 +1,20 @@
-package com.github.vaqio.university.lecture.schedules.repository.model;
+package com.github.vaqio.university.lecture.schedules.repository.model.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.vaqio.university.lecture.schedules.repository.model.audit.Auditable;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
-@Builder
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "students")
-@Entity
-public class Student extends Auditable<Long> {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+@MappedSuperclass
+public class User extends Auditable<User> {
 
   @NotBlank
   @Length(min = 3, max = 40)
@@ -43,15 +35,7 @@ public class Student extends Auditable<Long> {
   @NotBlank
   @JsonIgnore
   @Length(min = 3, max = 40)
-  @Column(unique = true)
+  @Column
   private String password;
-
-  @NotNull
-  @ManyToMany(
-          fetch = FetchType.EAGER,
-          mappedBy = "students",
-          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-  @JsonIgnore
-  private List<Lecture> lectures = new java.util.ArrayList<>();
 
 }
