@@ -3,14 +3,13 @@ package com.github.vaqio.university.lecture.schedules.repository.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.github.vaqio.university.lecture.schedules.repository.model.audit.Auditable;
 import lombok.*;
-import org.hibernate.annotations.NaturalId;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
+import java.util.List;
 
 @Builder
 @Setter
@@ -35,7 +34,6 @@ public class Student extends Auditable<Long> {
   @Column(name = "last_name")
   private String lastName;
 
-  @NaturalId
   @NotBlank
   @Length(min = 3, max = 40)
   @Email
@@ -51,9 +49,9 @@ public class Student extends Auditable<Long> {
   @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
-          cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-          mappedBy = "students")
+          mappedBy = "students",
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JsonIgnore
-  private Set<Lecture> lectures;
+  private List<Lecture> lectures = new java.util.ArrayList<>();
 
 }

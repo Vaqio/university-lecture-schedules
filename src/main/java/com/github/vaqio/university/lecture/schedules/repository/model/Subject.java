@@ -6,7 +6,8 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Builder
 @Setter
@@ -26,18 +27,20 @@ public class Subject {
   @Column(unique = true)
   private String name;
 
+  @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
-          cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-          mappedBy = "subjects")
+          mappedBy = "subjects",
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JsonIgnore
-  private Set<Teacher> teachers;
+  private List<Teacher> teachers = new java.util.ArrayList<>();
 
+  @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
-          cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-          mappedBy = "subject")
+          mappedBy = "subject",
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JsonIgnore
-  private Set<Lecture> lectures;
+  private List<Lecture> lectures = new java.util.ArrayList<>();
 
 }

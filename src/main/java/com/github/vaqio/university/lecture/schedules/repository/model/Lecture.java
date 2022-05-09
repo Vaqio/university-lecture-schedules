@@ -7,8 +7,9 @@ import org.springframework.lang.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Builder
 @Setter
@@ -38,6 +39,7 @@ public class Lecture {
           inverseJoinColumns = @JoinColumn(name = "subject_id"))
   private Subject subject;
 
+  @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
           cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -45,8 +47,9 @@ public class Lecture {
           name = "lecture_students",
           joinColumns = @JoinColumn(name = "lecture_id"),
           inverseJoinColumns = @JoinColumn(name = "student_id"))
-  private Set<Student> students;
+  private List<Student> students = new ArrayList<>();
 
+  @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
           cascade = { CascadeType.PERSIST, CascadeType.MERGE })
@@ -54,7 +57,7 @@ public class Lecture {
           name = "lecture_teachers",
           joinColumns = @JoinColumn(name = "lecture_id"),
           inverseJoinColumns = @JoinColumn(name = "teacher_id"))
-  private Set<Teacher> teachers;
+  private List<Teacher> teachers = new ArrayList<>();
 
   @ManyToOne(
           fetch = FetchType.EAGER,

@@ -7,8 +7,9 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Builder
 @Setter
@@ -24,24 +25,25 @@ public class Teacher extends Auditable<Long> {
   private Long id;
 
   @NotBlank
-  @NotEmpty
   @Length(min = 3, max = 40)
   private String name;
 
+  @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
-          cascade = { CascadeType.PERSIST, CascadeType.MERGE} )
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
           name = "teacher_subjects",
-          joinColumns = @JoinColumn(name = "lecture_id"),
-          inverseJoinColumns = @JoinColumn(name = "subject_id"))
-  private Set<Subject> subjects;
+          joinColumns = @JoinColumn(name = "lecture_id", referencedColumnName = "id"),
+          inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
+  private List<Subject> subjects = new ArrayList<>();
 
+  @NotNull
   @ManyToMany(
           fetch = FetchType.EAGER,
-          cascade = { CascadeType.PERSIST, CascadeType.MERGE},
-          mappedBy = "teachers")
+          mappedBy = "teachers",
+          cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JsonIgnore
-  private Set<Lecture> lectures;
+  private List<Lecture> lectures = new ArrayList<>();
 
 }
