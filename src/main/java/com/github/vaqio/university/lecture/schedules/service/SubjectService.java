@@ -12,9 +12,9 @@ public interface SubjectService {
 
   boolean existsByName(String name);
 
-  Optional<Subject> create(SubjectDTO subjectDTO);
+  Subject create(SubjectDTO subjectDTO);
 
-  Optional<Subject> updateName(Long id, String name);
+  Subject updateName(Long id, String name);
 
   void deleteById(Long id);
 
@@ -22,9 +22,9 @@ public interface SubjectService {
 
   void deleteAll();
 
-  Optional<Subject> getById(Long id);
+  Subject getById(Long id);
 
-  Optional<Subject> getByName(String name);
+  Subject getByName(String name);
 
   List<Subject> getAll();
 

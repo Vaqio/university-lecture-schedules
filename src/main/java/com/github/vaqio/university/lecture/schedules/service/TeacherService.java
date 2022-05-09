@@ -13,19 +13,19 @@ public interface TeacherService {
 
   boolean existsByName(String name);
 
-  Optional<Teacher> create(TeacherDTO teacherDTO);
+  Teacher create(TeacherDTO teacherDTO);
 
-  Optional<Teacher> updateFirstName(Long id, String firstName);
+  Teacher updateFirstName(Long id, String firstName);
 
-  Optional<Teacher> updateLastName(Long id, String lastName);
+  Teacher updateLastName(Long id, String lastName);
 
-  Optional<Teacher> updateEmail(Long id, String firstName);
+  Teacher updateEmail(Long id, String firstName);
 
-  Optional<Teacher> updatePassword(Long id, String password);
+  Teacher updatePassword(Long id, String password);
 
-  Optional<Teacher> addSubject(Long id, Long subjectId);
+  Teacher addSubject(Long id, Long subjectId);
 
-  Optional<Teacher> removeSubject(Long id, Long subjectId);
+  Teacher removeSubject(Long id, Long subjectId);
 
   void deleteById(Long id);
 
@@ -33,11 +33,11 @@ public interface TeacherService {
 
   void deleteAll();
 
-  Optional<Teacher> getCurrent(Principal principal);
+  Teacher getCurrent(Principal principal);
 
-  Optional<Teacher> getById(Long id);
+  Teacher getById(Long id);
 
-  Optional<Teacher> getByName(String name);
+  Teacher getByName(String name);
 
   List<Teacher> getAll();
 

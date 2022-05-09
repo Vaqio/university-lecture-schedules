@@ -14,15 +14,15 @@ public interface StudentService {
 
   boolean existsByEmail(String email);
 
-  Optional<Student> create(StudentDTO studentDTO);
+  Student create(StudentDTO studentDTO);
 
-  Optional<Student> updateFirstName(Long id, String firstName);
+  Student updateFirstName(Long id, String firstName);
 
-  Optional<Student> updateLastName(Long id, String lastName);
+  Student updateLastName(Long id, String lastName);
 
-  Optional<Student> updateEmail(Long id, String firstName);
+  Student updateEmail(Long id, String firstName);
 
-  Optional<Student> updatePassword(Long id, String password);
+  Student updatePassword(Long id, String password);
 
   void deleteById(Long id);
 
@@ -30,11 +30,11 @@ public interface StudentService {
 
   void deleteAll();
 
-  Optional<Student> getCurrent(Principal principal);
+  Student getCurrent(Principal principal);
 
-  Optional<Student> getById(Long id);
+  Student getById(Long id);
 
-  Optional<Student> getByEmail(String email);
+  Student getByEmail(String email);
 
   List<Student> getAll();
 

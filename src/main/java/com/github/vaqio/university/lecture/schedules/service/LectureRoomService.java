@@ -12,9 +12,9 @@ public interface LectureRoomService {
 
   boolean existsByRoomNumber(String roomNumber);
 
-  Optional<LectureRoom> create(LectureRoomDTO lectureRoomDTO);
+  LectureRoom create(LectureRoomDTO lectureRoomDTO);
 
-  Optional<LectureRoom> updateRoomNumber(Long id, String roomNumber);
+  LectureRoom updateRoomNumber(Long id, String roomNumber);
 
   void deleteById(Long id);
 
@@ -22,9 +22,9 @@ public interface LectureRoomService {
 
   void deleteAll();
 
-  Optional<LectureRoom> getById(Long id);
+  LectureRoom getById(Long id);
 
-  Optional<LectureRoom> getByRoomNumber(String roomNumber);
+  LectureRoom getByRoomNumber(String roomNumber);
 
   List<LectureRoom> getAll();
 
