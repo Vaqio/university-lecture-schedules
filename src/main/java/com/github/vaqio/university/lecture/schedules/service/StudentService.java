@@ -2,6 +2,7 @@ package com.github.vaqio.university.lecture.schedules.service;
 
 import com.github.vaqio.university.lecture.schedules.controller.dto.StudentDTO;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,8 @@ public interface StudentService {
   void deleteByEmail(String email);
 
   void deleteAll();
+
+  Optional<StudentDTO> getCurrent(Principal principal);
 
   Optional<StudentDTO> getById(Long id);
 
