@@ -14,7 +14,7 @@ public interface LectureRoomService {
 
   Optional<LectureRoom> create(LectureRoomDTO lectureRoomDTO);
 
-  Optional<LectureRoom> update(Long id, LectureRoomDTO lectureRoomDTO);
+  Optional<LectureRoom> updateRoomNumber(Long id, String roomNumber);
 
   void deleteById(Long id);
 

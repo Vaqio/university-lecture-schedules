@@ -15,7 +15,17 @@ public interface TeacherService {
 
   Optional<Teacher> create(TeacherDTO teacherDTO);
 
-  Optional<Teacher> update(Long id, TeacherDTO teacherDTO);
+  Optional<Teacher> updateFirstName(Long id, String firstName);
+
+  Optional<Teacher> updateLastName(Long id, String lastName);
+
+  Optional<Teacher> updateEmail(Long id, String firstName);
+
+  Optional<Teacher> updatePassword(Long id, String password);
+
+  Optional<Teacher> addSubject(Long id, Long subjectId);
+
+  Optional<Teacher> removeSubject(Long id, Long subjectId);
 
   void deleteById(Long id);
 

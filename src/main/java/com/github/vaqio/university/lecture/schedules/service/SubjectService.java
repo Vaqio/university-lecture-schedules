@@ -14,7 +14,7 @@ public interface SubjectService {
 
   Optional<Subject> create(SubjectDTO subjectDTO);
 
-  Optional<Subject> update(Long id, SubjectDTO subjectDTO);
+  Optional<Subject> updateName(Long id, String name);
 
   void deleteById(Long id);
 
