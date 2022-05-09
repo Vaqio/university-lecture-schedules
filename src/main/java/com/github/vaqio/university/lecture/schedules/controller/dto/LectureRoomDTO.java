@@ -19,7 +19,7 @@ public class LectureRoomDTO {
 
   @JsonProperty("room-number")
   @NotEmpty
-  @Length(min = 3, max = 40)
+  @Length(min = 1, max = 40)
   private String roomNumber;
 
 }
