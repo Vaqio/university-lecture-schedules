@@ -29,8 +29,8 @@ public class Teacher extends User {
           cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
           name = "teacher_subjects",
-          joinColumns = @JoinColumn(name = "lecture_id", referencedColumnName = "id"),
-          inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
+          joinColumns = @JoinColumn(name = "lecture_id"),
+          inverseJoinColumns = @JoinColumn(name = "subject_id"))
   private List<Subject> subjects = new ArrayList<>();
 
   @NotNull
