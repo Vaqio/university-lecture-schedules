@@ -24,7 +24,6 @@ public class SubjectServiceImpl implements SubjectService {
     this.repository = repository;
   }
 
-
   @Override
   public boolean existsById(Long id) {
     return this.repository.existsById(id);
