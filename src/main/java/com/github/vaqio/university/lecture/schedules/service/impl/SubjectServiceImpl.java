@@ -64,7 +64,7 @@ public class SubjectServiceImpl implements SubjectService {
   @Override
   public void deleteById(Long id) {
     if (!this.repository.existsById(id)) {
-      throw new EntityNotFoundException("None room could be found by the given id");
+      throw new EntityNotFoundException("None subject could be found by the given id");
     }
 
     this.repository.deleteById(id);
@@ -73,7 +73,7 @@ public class SubjectServiceImpl implements SubjectService {
   @Override
   public void deleteByName(String name) {
     if (!this.repository.existsByNameIgnoreCase(name)) {
-      throw new EntityNotFoundException("None room could be found by the given id");
+      throw new EntityNotFoundException("None subject could be found by the given name");
     }
 
     this.repository.deleteByNameIgnoreCase(name);
