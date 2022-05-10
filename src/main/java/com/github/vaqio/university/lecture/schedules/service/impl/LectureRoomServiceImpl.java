@@ -6,6 +6,7 @@ import com.github.vaqio.university.lecture.schedules.repository.LectureRoomRepos
 import com.github.vaqio.university.lecture.schedules.repository.model.LectureRoom;
 import com.github.vaqio.university.lecture.schedules.service.LectureRoomService;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityExistsException;
@@ -17,7 +18,8 @@ import java.util.List;
 public class LectureRoomServiceImpl implements LectureRoomService {
   
   private final LectureRoomRepository repository;
-  
+
+  @Autowired
   public LectureRoomServiceImpl(LectureRoomRepository repository) {
     this.repository = repository;
   }
